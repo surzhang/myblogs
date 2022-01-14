@@ -1,8 +1,8 @@
-# Headline
+# Welcome here
 
-> An awesome project.
+> A famous project.
 
 > [个人博客](#kkk)  
 > [GitHub](#fast)
->
-> test
+
+本博客主要记录自己的学习笔记以及个人面经。
