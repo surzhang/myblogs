@@ -49,8 +49,9 @@ value[] ，所以 String 对象是不可变的。
 private final byte[] value  
 - 而 StringBuilder 与 StringBuffer 都继承自 AbstractStringBuilder 类，在 AbstractStringBuilder 中
 也是使用字符数组保存字符串 char[]value 但是没有用 final 关键字修饰，所以这两种对象都是可
-变的。   
+变的。  
 ```java
+
 public abstract class AbstractStringBuilder implements Appendable, CharSequence {
 /**
 * The value is used for character storage.
@@ -63,6 +64,7 @@ int count;
 AbstractStringBuilder(int capacity) {
 value = new char[capacity];
 }
+
 ```
 - String 中的对象是不可变的，也就可以理解为常量，线程安全。AbstractStringBuilder 是
   StringBuilder 与 StringBuffer 的公共父类，定义了一些字符串的基本操作，如 expandCapacity、
