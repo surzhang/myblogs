@@ -51,7 +51,6 @@ private final byte[] value
 也是使用字符数组保存字符串 char[]value 但是没有用 final 关键字修饰，所以这两种对象都是可
 变的。  
 ```java
-
 public abstract class AbstractStringBuilder implements Appendable, CharSequence {
 /**
 * The value is used for character storage.
@@ -74,7 +73,8 @@ value = new char[capacity];
   对象。StringBuffer 每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象并改变对象
   引用。相同情况下使用 StringBuilder 相比使用 StringBuffer 仅能获得 10%~15% 左右的性能提
   升，但却要冒多线程不安全的⻛险。  
-    
+  
+
 **对于三者使用的总结：**
 1. 操作少量的数据: 适用 String
 2. 单线程操作字符串缓冲区下操作大量数据: 适用 StringBuilder
@@ -86,7 +86,7 @@ value = new char[capacity];
 public final class 类名称 {
 		...
 	}
-```
+ ```
  作用：使当前这个类不能有任何子类。（“太监类”）
  注意：一个类如果是final的，那么其中所有的成员方法都无法进行覆盖重写  
  ② 可以用来修饰一个方法  
@@ -94,7 +94,7 @@ public final class 类名称 {
 	修饰符 final 返回值类型 方法名称(参数列表) {
 		方法体
 	}
-```
+ ```
  作用：当final关键字用来修饰一个方法的时候，这个方法就是最终方法，不能够被覆盖重写
  注意：对于类、方法来说，abstract关键字和final关键字不能同时使用，因为作用相互矛盾  
  ③ 可以用来修饰一个局部变量  
@@ -104,7 +104,7 @@ public final class 类名称 {
 	// ② 引用数据类型情况下的格式
 	final 类型 对象名 = new 类名();
 	//例如：final Student stu = new Student();
-```
+ ```
  作用：当final关键字用于修饰局部变量的时候，这个局部变量就不能更改，“一次赋值，终生不变”
  注意：对于 基本类型 来说，不可改变指的是变量当中的数据不可改变，但是对于 引用类型 来说，不可改变的指的是变量当中的地址值不可改变  
  ④ 可以用来修饰一个成员变量  
@@ -112,7 +112,7 @@ public final class 类名称 {
  + 由于成员变量具有默认值，所以用了final之后必须手动赋值，不会再给默认值了  
  + 对于final的成员变量，要么使用直接赋值，要么通过构造方法赋值，只能二选一  
  + 必须保证类当中所有重载的构造方法，都最终会对final的成员变量进行赋值    
- 
+
 #### 5.hashmap和hashtable的区别？ 
 1. 线程是否安全： HashMap 是非线程安全的， HashTable 是线程安全的,因为 HashTable 内
 部的方法基本都经过 synchronized 修饰。（如果你要保证线程安全的话就使用
@@ -223,4 +223,21 @@ flatMap做的事情：把二箱鸡蛋分别加工成煎蛋，然后放到一起�
 >spring的定时任务也有三种  
 
 [spring定时任务](https://blog.csdn.net/lchq1995/article/details/78222528)  
-[springboot定时任务](https://www.cnblogs.com/lenve/p/10728897.html)
+[springboot定时任务](https://www.cnblogs.com/lenve/p/10728897.html)  
+在 SpringBoot 中使用定时任务主要有两种不同的方式，一个就是使用 Spring 中的
+@Scheduled 注解，另一个则是使用第三方框架 Quartz。
+使用 Spring 中的 @Scheduled 的方式主要通过 @Scheduled 注解来实现。
+使用 Quartz ，则按照 Quartz 的方式，定义 Job 和 Trigger 即可。
+#### 9.如何保证线程安全？
+#### 10.常用的设计模式？
+#### 11.进程和线程？
+操作系统中可以拥有多个进程，一个进程里可以拥有多个线程，线程在进程内执行  
+进程和线程的区别  
++ 容易创建新线程。创建新进程需要重复父进程
++ 线程可以控制同一进程的其他线程。进程无法控制兄弟进程，只能控制其子进程
++ 进程拥有自己的内存空间。线程使用进程的内存空间，且要和该进程的其他线程共享这个空间；而不是在进程中给每个线程单独划分一点空间。
++ （同一进程中的）线程在共享内存空间中运行，而进程在不同的内存空间中运行
++ 线程可以使用 wait（），notify（），notifyAll（）等方法直接与其他线程（同一进程）
+通信；而，进程需要使用“进程间通信”（IPC）来与操作系统中的其他进程通信。
+#### 12.抽象类和接口的区别？
+#### 13，AQS和CAS？

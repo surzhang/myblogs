@@ -3,8 +3,10 @@
   - [introduce](introduce/rec.md)
 
 - 常见面试题
-  - [java基础](base/java.md)
-  - [多线程](multhread/thread.md)
+  - [java基础](base/java.md)  
+  - [java集合](array/array.md)
+  - [多线程](multhread/thread.md) 
+  - [JVM](jvm/myjvm.md)
   - [数据结构&算法](algorithm/leetcode.md)
   - [数据库](mysql/mysql.md)
   - [框架](framework/fram.md)
