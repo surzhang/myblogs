@@ -17,7 +17,8 @@ equals() : 它的作用也是判断两个对象是否相等。但它一般有两
 + 情况 1：类没有覆盖 equals() 方法。则通过 equals() 比较该类的两个对象时，等价于通过
 “==”比较这两个对象。  
 + 情况 2：类覆盖了 equals() 方法。一般，我们都覆盖 equals() 方法来比较两个对象的内容是
-否相等；若它们的内容相等，则返回 true (即，认为这两个对象相等)。
+否相等；若它们的内容相等，则返回 true (即，认为这两个对象相等)。  
+
 ```java
 public class test1 {
     public static void main(String[] args) {
@@ -37,6 +38,7 @@ public class test1 {
     }
 }
 ```
+
 + String 中的 equals 方法是被重写过的，因为 object 的 equals 方法是比较的对象的内存地
 址，而 String 的 equals 方法比较的是对象的值。
 + 当创建 String 类型的对象时，虚拟机会在常量池中查找有没有已经存在的值和要创建的值相
@@ -50,6 +52,7 @@ private final byte[] value
 - 而 StringBuilder 与 StringBuffer 都继承自 AbstractStringBuilder 类，在 AbstractStringBuilder 中
 也是使用字符数组保存字符串 char[]value 但是没有用 final 关键字修饰，所以这两种对象都是可
 变的。  
+
 ```java
 public abstract class AbstractStringBuilder implements Appendable, CharSequence {
 /**
@@ -63,12 +66,12 @@ int count;
 AbstractStringBuilder(int capacity) {
 value = new char[capacity];
 }
-
 ```
+
 - String 中的对象是不可变的，也就可以理解为常量，线程安全。AbstractStringBuilder 是
-  StringBuilder 与 StringBuffer 的公共父类，定义了一些字符串的基本操作，如 expandCapacity、
-  append、insert、indexOf 等公共方法。StringBuffer 对方法加了`同步锁`或者对调用的方法加了同
-  步锁，所以是线程安全的。StringBuilder 并没有对方法进行加同步锁，所以是非线程安全的。
+StringBuilder 与 StringBuffer 的公共父类，定义了一些字符串的基本操作，expandCapacity、
+append、insert、indexOf 等公共方法。StringBuffer 对方法加了`同步锁`或者对调用的方法加了同 步锁，所以是线程安全的。StringBuilder 并没有对方法进行加同步锁，所以是非线程安全的。  
+
 - 每次对 String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String
   对象。StringBuffer 每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象并改变对象
   引用。相同情况下使用 StringBuilder 相比使用 StringBuffer 仅能获得 10%~15% 左右的性能提
