@@ -68,6 +68,7 @@ value = new char[capacity];
 }
 ```
 
+
 - String 中的对象是不可变的，也就可以理解为常量，线程安全。AbstractStringBuilder 是
 StringBuilder 与 StringBuffer 的公共父类，定义了一些字符串的基本操作，expandCapacity、
 append、insert、indexOf 等公共方法。StringBuffer 对方法加了`同步锁`或者对调用的方法加了同 步锁，所以是线程安全的。StringBuilder 并没有对方法进行加同步锁，所以是非线程安全的。  
