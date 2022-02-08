@@ -118,7 +118,10 @@ keepAliveTime 才会被回收销毁；
 时候默认使用的是 ThreadPoolExecutor.AbortPolicy 。在默认情况下， ThreadPoolExecutor 将抛出
 RejectedExecutionException 来拒绝新来的任务 ，这代表你将丢失对这个任务的处理。 对于可伸
 缩的应用程序，建议使用 ThreadPoolExecutor.CallerRunsPolicy 。当最大池被填满时，此策略为我们提供可伸缩队列。  
-#### 5.volatile关键字？
+#### 5.Volatile和Synchronized的区别？Volatile能不能保证线程安全？DCL单例模式为什么要加volatile？  
+1、Synchronized关键字，用来加锁。volatile只是保证变量的可见性。通常适用于一个线程写，多个线程读的场景。  
+2、不能，volatile只能保证线程可见性，不能保证原子性。  
+3、Vilatile防止指令重派。  
 #### 6.守护线程和非守护线程说一说？
 java 中的线程分为两种：守护线程（Daemon）和用户线程（User）。任何线程都可以设置为守护线程和用户线程，通过方法
 Thread.setDaemon(boolon) ； true 则 把 该 线程 设 置 为 守 护 线 程 ， 反 之 则 为 用 户 线 程 。
@@ -132,4 +135,7 @@ JVM 自动创建的线程（但不一定），用户线程是程序创建的线�
 扩展：Thread Dump 打印出来的线程信息，含有 daemon 字样的线程即为守护进程，可能
 会有：服务守护进程、编译守护进程、windows 下的监听 Ctrl+break 的守护进程、
 Finalizer 守护进程、引用处理守护进程、GC 守护进程。
-#### 7.mesi协议？
+#### 7.JAVA如何开启线程，怎么保证线程安全？
+进程和线程的区别：进程是操作系统进行资源分配的最小单元。线程是操作系统进行任务分配的最小单元，线程隶属于进程。  
+**如何开启线程？**1.继承Thread类2.实现Runnable接口，实现run方法3.实现Callable接口，实现call方法。通过FutureTask 创建一个线程，获取到线程执行的返回值。4通过线程池来开启线程。  
+**怎么保证线程安全？**加锁：1.JVM提供的锁，也就是Synchronized关键字，2，JDK提供的各种锁  
